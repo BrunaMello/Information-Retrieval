@@ -28,22 +28,23 @@ termindex = 0
 docindex = 0
 
 # initialize list variable
+#
 alltokens = []
 alldocs = []
 
-
+#
 # Capture the start time of the routine so that we can determine the total running
 # time required to process the corpus
-
+#
 t2 = time.localtime()
 
 
 # set the name of the directory for the corpus
-
-dirname = "Corpus-for-Assignments"
+#
+dirname = "c:\users\datai\cacm"
 
 # For each document in the directory read the document into a string
-
+#
 all = [f for f in os.listdir(dirname)]
 for f in all:
     documents+=1
@@ -56,7 +57,7 @@ for f in all:
 
 
 # Open for write a file for the document dictionary
-
+#
 documentfile = open(dirname+'/'+'documents.dat', 'w')
 alldocs.sort()
 for f in alldocs:
@@ -64,14 +65,15 @@ for f in alldocs:
     documentfile.write(f+','+str(docindex)+os.linesep)
 documentfile.close()
 
-
+#
 # Sort the tokens in the list
 alltokens.sort()
 
+#
 # Define a list for the unique terms
 g=[]
 
-
+#
 # Identify unique terms in the corpus
 for i in alltokens:
     if i not in g:
@@ -81,7 +83,7 @@ for i in alltokens:
 terms = len(g)
 
 # Output Index to disk file. As part of this process we assign an 'index' number to each unique term.
-
+#
 indexfile = open(dirname+'/'+'index.dat', 'w')
 for i in g:
     termindex += 1
@@ -95,12 +97,13 @@ print('Processing Start Time: %.2d:%.2d' % (t2.tm_hour, t2.tm_min))
 # Number of documents processed
 print("Documents %i" % documents)
 
-
 # Total number of terms parsed from all documents
 print("Tokens %i" % tokens)
 
+
 # Total number of unique terms found and added to the index
 print("Terms %i" % terms)
+
 
 t2 = time.localtime()
 print('Processing End Time: %.2d:%.2d' % (t2.tm_hour, t2.tm_min))
